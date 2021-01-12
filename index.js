@@ -4,7 +4,7 @@ const needle = require('needle');
 
 /**
  * Fetch currency or return null
- * @param jsonValue
+ * @param {Object} jsonValue
  * @return {string|null}
  */
 const getDataFromResponse = jsonValue => {
@@ -26,6 +26,10 @@ const getDataFromResponse = jsonValue => {
 
 const OUTPUT_FILENAME = 'Output.csv';
 
+/**
+ * Save (append) value to resulting file
+ * @param {string} value
+ */
 const saveDataSync = value => {
   console.log('Saving result');
   const fileExist = fs.existsSync(OUTPUT_FILENAME);
@@ -68,7 +72,7 @@ const getJsonDataMock = async () => {
 
 /**
  * This should also work good.
- * @return {Promise<*>}
+ * @return {Promise<Object>}
  */
 const getJsonData = async () => {
   const response = await needle('get', URL);
@@ -95,12 +99,21 @@ const run = async () => {
 
 const DELAY_BETWEEN_ITERATIONS = 30 * 1000;
 
+/**
+ * Delay
+ * @param {number} delayTime
+ * @returns {Promise<void>}
+ */
 const delay = (delayTime = 1000) => {
   return new Promise(resolve => {
     setTimeout(resolve, delayTime);
   });
 };
 
+/**
+ * Main loop
+ * @returns {Promise<void>}
+ */
 const main = async () => {
   while (true) {
     console.log('Iteration started.');
