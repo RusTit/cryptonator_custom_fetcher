@@ -9,7 +9,12 @@ const needle = require('needle');
  */
 const getDataFromResponse = jsonValue => {
   console.log('Preprocessing response from server.');
-  if (!jsonValue.success || jsonValue.error) {
+  if (
+    !jsonValue.success ||
+    jsonValue.error ||
+    !jsonValue.ticker ||
+    !jsonValue.ticker.price
+  ) {
     return null;
   }
   const originalPrice = jsonValue.ticker.price;
@@ -77,6 +82,10 @@ const run = async () => {
     const rateValue = getDataFromResponse(jsonData);
     if (rateValue) {
       saveDataSync(rateValue);
+    } else {
+      console.log(
+        `Invalid body response from server: ${JSON.stringify(jsonData)}`
+      );
     }
   } catch (e) {
     console.error('Error while fetching data from cryptonator');
