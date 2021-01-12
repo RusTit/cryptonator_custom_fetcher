@@ -1,0 +1,31 @@
+{
+  "name": "cryptonator_custom_fetcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RusTit/cryptonator_custom_fetcher.git"
+  },
+  "author": "Anatoly Russkih <titanofdarkness@gmail.com> (https://www.upwork.com/freelancers/~011643ce25648a0d70)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RusTit/cryptonator_custom_fetcher/issues"
+  },
+  "homepage": "https://github.com/RusTit/cryptonator_custom_fetcher#readme",
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-chai-friendly": "^0.6.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.2.0"
+  },
+  "dependencies": {
+    "needle": "^2.6.0"
+  }
+}
