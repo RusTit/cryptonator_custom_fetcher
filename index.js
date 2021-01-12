@@ -1,5 +1,6 @@
 const fs = require('fs');
 const needle = require('needle');
+const request = require('request-promise-native');
 
 /**
  * Fetch currency or return null
@@ -51,6 +52,19 @@ const getJsonDataMock = async () => {
 };
 */
 
+/**
+ * Deprecated, because it's use "request" lib, but it work with proxies, without additional code.
+ * @return {Promise<*>}
+ */
+const getJsonDataDeprecated = async () => {
+  const data = await request.get(URL, { json: true });
+  return data;
+};
+
+/**
+ * This should also work good.
+ * @return {Promise<*>}
+ */
 const getJsonData = async () => {
   const response = await needle('get', URL);
   return response.body;
@@ -59,7 +73,7 @@ const getJsonData = async () => {
 const run = async () => {
   try {
     console.log('Fetching data.');
-    const jsonData = await getJsonData();
+    const jsonData = await getJsonDataDeprecated();
     const rateValue = getDataFromResponse(jsonData);
     if (rateValue) {
       saveDataSync(rateValue);
